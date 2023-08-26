@@ -3,14 +3,32 @@
     <div>
       <router-link to="/">Register</router-link>
       <router-link to="/login">Login</router-link>
+      <a @click="logout">Logout</a>
     </div>
   </nav>
 </template>
 
 <script>
 export default {
-  name: "Navbar"
-}
+  name: "Navbar",
+  methods: {
+    async logout() {
+      try {
+        const response = await axios.post("http://localhost:5000/logout", {
+          email: this.email
+        });
+        if (response.status === 200) {
+          console.log("Logout bem-sucedido");
+          this.$router.push("/login");
+        } else {
+          console.log("Erro ao fazer logout");
+        }
+      } catch (error) {
+        console.error("Erro ao fazer logout:", error);
+      }
+    }
+  }
+};
 </script>
 
 <style scoped>

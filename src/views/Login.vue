@@ -32,6 +32,7 @@ export default {
 
         if (response.status === 200) {
           console.log("Login bem-sucedido");
+          this.$router.push("/reservations");
         } else {
           console.log("Credenciais inválidas");
         }

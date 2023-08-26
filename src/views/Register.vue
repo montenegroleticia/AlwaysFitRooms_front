@@ -33,6 +33,7 @@ export default {
 
         if (response.status === 200) {
           console.log("Registro bem-sucedido");
+          this.$router.push("/login");
         } else {
           console.log("Erro no registro");
         }
