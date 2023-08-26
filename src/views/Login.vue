@@ -31,6 +31,7 @@ export default {
         });
 
         if (response.status === 200) {
+          localStorage.setItem('userEmail', this.email);
           console.log("Login bem-sucedido");
           this.$router.push("/reservations");
         } else {

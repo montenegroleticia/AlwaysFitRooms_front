@@ -14,10 +14,14 @@ export default {
   methods: {
     async logout() {
       try {
-        const response = await axios.post("http://localhost:5000/logout", {
-          email: this.email
+        const email = localStorage.getItem('userEmail');
+        const response = await axios.post("http://localhost:5000/logout", null, {
+          data: {
+            email: email
+          }
         });
         if (response.status === 200) {
+          localStorage.removeItem('userEmail');
           console.log("Logout bem-sucedido");
           this.$router.push("/login");
         } else {
